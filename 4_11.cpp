@@ -1,6 +1,5 @@
 #include <iostream>
 #include <fstream>
-#include <fstream>
 #include <cstdlib>
 #include <iomanip>
 using namespace std;
@@ -12,7 +11,7 @@ int main()
 	double sum[3]={0,0,0};
 	double number, colsum;
 	
-	cout << "Bitte Dateiname eingeben: ";														// Nach Datei fragen.
+	cout << "Bitte Dateiname eingeben: ";														// Nach Datei fragen. a11-bsp1.dat, a11-bsp2.dat
 	ifstream bucky;
 	cin.getline(filename, 50);
 	bucky.open(filename);
@@ -23,10 +22,10 @@ int main()
 	}
 	
 	bucky >> number;																			// Matrix aus Datei auslesen.
-	cout << endl << setw(10);
+	cout << endl << setw(9);
 	for(int i=0; bucky.good(); i++){
 		for(int j=0; j<=2; j++){
-			cout << number << setw(10);
+			cout << number << setw(9);
 			mat[i][j] = number;
 			bucky >> number;
 		}
@@ -34,7 +33,7 @@ int main()
 	}
 	
 																								// Determinante berechnen.
-	double det = mat[0][0]*mat[1][1]*mat[2][2]+mat[0][1]*mat[1][2]*mat[2][0]+mat[0][2]*mat[1][0]*mat[2][1]-mat[0][2]*mat[1][1]*mat[2][0]-mat[0][0]*mat[1][2]*mat[2][1]-mat[0][1]*mat[1][0]*mat[2][2];
+	double det = mat[0][0]*mat[1][1]*mat[2][2]+mat[0][1]*mat[1][2]*mat[2][0]+mat[0][2]*mat[1][0]*mat[2][1]-(mat[0][2]*mat[1][1]*mat[2][0])-(mat[0][0]*mat[1][2]*mat[2][1])-(mat[0][1]*mat[1][0]*mat[2][2]);
 	
 	for(int j=0; j<=2; j++){																	// Spaltensummen berechnen.
 		for(int i=0; i<=2; i++){
