@@ -7,8 +7,9 @@ using namespace std;
 
 int main()
 {
+	float pivot;
 	double number, sum, maximum, swapb;
-	int length, diagonal, pivot;
+	int length, diagonal, check;
 	char filename[50];																			// Variablen definieren.
 	
 	cout << "Bitte Dateiname eingeben: ";														// Nach Datei fragen. a13-lgs1.dat, ...
@@ -41,8 +42,9 @@ int main()
 	}
 	
 	cout << "Ohne Spaltenpivotisierung: 0" << endl << "Mit Spaltenpivotisierung: 1" << endl;	// Abfrage ob Spaltenpivotisierung genutzt werden soll.
-	cin >> pivot;
-	if (pivot != (1 or 0)){ 																	// Entscheiden Eingabe Korrekt ist.
+ 	cin >> pivot;
+	check = pivot;
+	if (check<0 or check>1 or cin.fail()==1 or check!=pivot){ 									// Entscheiden Eingabe korrekt war.
 		cout << "Falsche Eingabe!" << endl;														// Gibt die Fehlermeldung aus.
 		exit(EXIT_FAILURE);
 	}
@@ -85,7 +87,7 @@ int main()
 	for(int i=length-1; i>=1; i--){																// In Dreiecksform umwandeln.
 		diagonal = length-i-1;
 		for(int j=length-1; j>=length-i; j--){
-			if(pivot==1){																		// Spaltenpivotisierung wird durchgeführt.
+			if(check==1){																		// Spaltenpivotisierung wird durchgeführt.
 				for(int k=j; k>=diagonal; k--){													
 					if(fabs(mat[k][i])>fabs(mat[diagonal][i])){									
 						swapb = sol[k];
