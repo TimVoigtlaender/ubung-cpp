@@ -48,9 +48,7 @@ int main()
 		cout << "Falsche Eingabe!" << endl;														// Gibt die Fehlermeldung aus.
 		exit(EXIT_FAILURE);
 	}
-	
-	
-	
+		
 	for(int i=0; i<length; i++){																// Gleichung darstellen.
 	 	for(int j=0; j<length; j++){
 			cout << setw(9) << mat[i][j];
@@ -106,7 +104,6 @@ int main()
 			for(int k=0; k<length; k++){
 				mat[j][k] = mat[j][k]-c*mat[diagonal][k];
 			}
-		
 		}
 	}
 
