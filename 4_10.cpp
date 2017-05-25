@@ -17,7 +17,8 @@ int main() {
 	}
 	inputint = check;
 	amax = inputint;
-	for(int n=1; check!=1; n++){										// Lässt Programm laufen bis 1 erreicht wurde.
+	int n;
+	for(n=1; check!=1; n++){										// Lässt Programm laufen bis 1 erreicht wurde.
 		if ((check % 2) == 0){											// a(n) gerade
 			check *= 1./2;
 		}
@@ -27,6 +28,6 @@ int main() {
 		amax = max(amax, check);										// größtes Folgenglied ermitteln.
 		cout << "a(" << n << ")= " << check <<endl;						// ausgabe der Schritte.
 	}
-		cout << "Das maximale a(n) bei der Startzahl " << inputint << " ist " << amax;			// Maximales Folgenglied ausgeben.
+		cout << "Das maximale a(n) bei der Startzahl " << inputint << " ist nach " << n-1 << " Schritten " << amax;			// Maximales Folgenglied ausgeben.
   return(0);
 }
