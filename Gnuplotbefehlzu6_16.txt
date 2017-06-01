@@ -1,0 +1,5 @@
+
+set key top left
+set xlabel 'x'
+set ylabel 'f(x)'
+plot 'a16-interpol-res.dat' title 'neue Werte' lt rgb 'blue','a16-interpol.dat' title 'alte Werte' lt rgb 'red'
