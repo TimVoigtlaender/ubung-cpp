@@ -68,6 +68,7 @@ int main()
 		return 1;
 	}
 	fprintf(gnu, "cd 'C:\\Users\\Tim\\Documents\\GitHub\\ubung-cpp' \n");
+	fprintf(gnu, "set key top left \n");
 	fprintf(gnu, "set xlabel 'x' \n");
 	fprintf(gnu, "set ylabel 'f(x)' \n");
 	fprintf(gnu, "plot 'a17-interpol-res.dat' title 'neue Werte' lt rgb 'blue','a16-interpol.dat' title 'alte Werte' lt rgb 'red' \n");
