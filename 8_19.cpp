@@ -42,6 +42,7 @@ bool next_permutation(char *x, int y){																				// Funktion next_permu
 	swap(x[wertk], x[wertl]);																						// P3
 
 	for(int j=wertk+1; j<=(y+wertk)/2; j++){																		// P4
+		swap(x[j],x[y-j+wertk]);
 	}
 
 	return 1;
