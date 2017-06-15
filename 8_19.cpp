@@ -10,9 +10,16 @@ using namespace std ;
 
 // die Funktionen next_permutation (und swap) sind zu ergaenzen
 
-bool next_permutation(char *x, int y){																				// Funktion next_permutation gebaut.
+void swap(int a, int b){																							// Funktion swap gebaut
+	int sw = a;
+	a = b;
+	b = sw;
+}
 
-	char swap;
+
+bool next_permutation(char *x, int y){																				// Funktion next_permutation gebaut
+
+
 	int wertk = -1;
 	int wertl = -1;
 	
@@ -32,14 +39,9 @@ bool next_permutation(char *x, int y){																				// Funktion next_permu
 		}
 	}
 	
-	swap = x[wertk];																								// P3
-	x[wertk] = x[wertl];
-	x[wertl] = swap;
+	swap(x[wertk], x[wertl]);																						// P3
 
 	for(int j=wertk+1; j<=(y+wertk)/2; j++){																		// P4
-		swap = x[j];
-		x[j] = x[y-j+wertk];
-		x[y-j+wertk] = swap;
 	}
 
 	return 1;
