@@ -33,10 +33,9 @@ void ausgabe(){
  	cout << endl;
 }
 
-int  free (int testcollum, int testrow)
-{
-  for (int test=0; test<testrow; test++)
-    if ((x[test]==testcollum) || (abs(x[test]-testcollum)==abs(test-testrow))) return 0;
+int  free (int testcollum, int testrow){
+  	for (int test=0; test<testrow; test++)
+    	if ((x[test]==testcollum) || (abs(x[test]-testcollum)==abs(test-testrow))) return 0;
   return 1;
 }
 
