@@ -4,13 +4,18 @@
 using namespace std ;
 
 
-int x[8]; /* x[i] = x coordinate of queen in row i. */
+int anz = 8;
+int x[8];/* x[i] = x coordinate of queen in row i. */
 
 void ausgabe(){
-	cout << "+---+---+---+---+---+---+---+---+" << endl;
-  	for (int row=0; row< 8; row++) {
+	cout << "+";
+	for(int i=0; i<anz;i++){
+		cout << "---+";
+	}
+	cout << endl;
+  	for (int row=0; row< anz; row++) {
     	cout << "|";
-	    for (int collum=0; collum< 8; collum++){
+	    for (int collum=0; collum< anz; collum++){
 	      	if (collum==x[row]){
 	      		cout << "[ ]";
 	      	}
@@ -19,7 +24,11 @@ void ausgabe(){
 	     	}
 	     	cout << "|";
 	    }
-	  	cout << endl << "+---+---+---+---+---+---+---+---+" << endl;
+	  	cout << endl << "+";
+		for(int i=0; i<anz;i++){
+			cout << "---+";
+		}
+		cout << endl;
 	}
  	cout << endl;
 }
@@ -33,12 +42,12 @@ int  free (int testcollum, int testrow)
 
 
 void setqueen(int row){
-	if (row== 8){
+	if (row== anz){
   		ausgabe();
-//		system ("PAUSE");
+		system ("PAUSE");
 	}
 	else{
-	   	for (int i=0; i< 8; i++){
+	   	for (int i=0; i< anz; i++){
     		if ( free(i,row)) {
         x[row]=i;
         setqueen(row+1);
@@ -47,8 +56,7 @@ void setqueen(int row){
   	}
 }
 
-int main ()
-{
-  setqueen(0);
-  return 0;
+int main (){
+	setqueen(0);
+	return 0;
 }
