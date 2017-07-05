@@ -16,16 +16,13 @@ class normal_generator{
 };
 
 double normal_generator::get(){
-//	cout <<count <<endl;
 	if(count==1){
 		double v1 = 2.0*rand()/(double)RAND_MAX - 1;
 		double v2 = 2.0*rand()/(double)RAND_MAX - 1;
 		double s = pow(v1,2)+pow(v2,2);
-//		cout << "s=" << s << endl;
 		if(s!=0 and s<1){
 			z1 = v1*sqrt(-2*log(s)/s);
 			z2 = v2*sqrt(-2*log(s)/s);
-//			cout << z1 <<" a "<< z2 << endl;
 			count = 2;
 			return z1;
 		}
