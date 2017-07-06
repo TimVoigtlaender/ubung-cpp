@@ -62,12 +62,12 @@ void quicksort(double *arr, const int left, const int right, const int sz){
 
 int main() {
 	srand((unsigned int)time(0));
-	int anz = 1000;
+	int anz = 10000;
     double arr[anz];
     for(int i=0; i<anz; i++){
     	arr[i] = double(rand())/RAND_MAX;
 	}
-//    print(arr, anz);
+    print(arr, anz);
     quicksort(arr, 0, anz - 1, anz);
     print(arr, anz);
     return 0;

@@ -26,35 +26,33 @@ class Ratio{																						// Klasse Ratio erstellen
 		
 	private:
 		long int zaehler, nenner;																	
-		long int gibzaehler() {return zaehler;}														// Ausgabe als Zahlen
-		long int gibnenner() {return nenner;}
 		void kurz();																				
 };
 
 Ratio Ratio::operator+(Ratio sum){																	// Operator +
-	zaehler = zaehler*sum.gibnenner()+sum.gibzaehler()*nenner;
-	nenner = nenner*sum.gibnenner();
+	zaehler = zaehler*sum.nenner+sum.zaehler*nenner;
+	nenner = nenner*sum.nenner;
 	kurz();
 	return *this;
 }
 
 Ratio Ratio::operator-(Ratio minu){																	// Operator -
-	zaehler = zaehler*minu.gibnenner()-minu.gibzaehler()*nenner;
-	nenner = nenner*minu.gibnenner();
+	zaehler = zaehler*minu.nenner-minu.zaehler*nenner;
+	nenner = nenner*minu.nenner;
 	kurz();
 	return *this;	
 }
 
 Ratio Ratio::operator*(Ratio mal){																	// Operator *
-	zaehler *= mal.gibzaehler();
-	nenner *= mal.gibnenner();
+	zaehler *= mal.zaehler;
+	nenner *= mal.nenner;
 	kurz();
 	return *this;	
 }
 
 Ratio Ratio::operator/(Ratio geteilt){																// Operator /
-	zaehler *= geteilt.gibnenner();
-	nenner *= geteilt.gibzaehler();
+	zaehler *= geteilt.nenner;
+	nenner *= geteilt.zaehler;
 	kurz();
 	return *this;	
 }
