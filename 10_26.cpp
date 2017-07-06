@@ -4,10 +4,10 @@
 using namespace std ;
 
 
-int anz = 8;
-int x[8];/* x[i] = x coordinate of queen in row i. */
+int anz = 25;
+/* x[i] = x coordinate of queen in row i. */
 
-void ausgabe(){
+void ausgabe(int *x){
 	cout << "+";
 	for(int i=0; i<anz;i++){
 		cout << "---+";
@@ -33,29 +33,33 @@ void ausgabe(){
  	cout << endl;
 }
 
-int  free (int testcollum, int testrow){
+int  free (int testcollum, int testrow, int *x){
   	for (int test=0; test<testrow; test++)
     	if ((x[test]==testcollum) || (abs(x[test]-testcollum)==abs(test-testrow))) return 0;
   return 1;
 }
 
 
-void setqueen(int row){
+void setqueen(int row, long int &count, int *x){
 	if (row== anz){
-  		ausgabe();
+  		count++;
+  		ausgabe(x);
 		system ("PAUSE");
 	}
 	else{
 	   	for (int i=0; i< anz; i++){
-    		if ( free(i,row)) {
+    		if ( free(i,row, x)) {
         x[row]=i;
-        setqueen(row+1);
+        setqueen(row+1, count, x);
       		}	
       	}
   	}
 }
 
 int main (){
-	setqueen(0);
+	int x[anz];
+	long int count=0;
+	setqueen(0, count, x);
+	cout << "Anzahl moeglichkeiten: " << count << endl << endl;
 	return 0;
 }
