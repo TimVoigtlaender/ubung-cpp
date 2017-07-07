@@ -14,40 +14,23 @@ double f3(double x){
     return pow(x,2)-5*x+sin(x)-1;
 }
 
-int existiert(double x0,double x1,double xt){
-//    cout << f(x0,nf)*f(x1,nf) << endl;
-    if(f(x0)*f(x1)>0){
-        return 0;
-    }
-    else{
-        if(f(x0)*f(xt)>0){
-            return 1;
-        }
-        else{
-            return -1;
-        }
-    }
-}
-
 void nullstellen(double &x0, double &x1,int counter){
     counter++;
     double xt=(x0+x1)/2.;
     cout << "Schritt " << counter << ":" << endl << "Das Intervall geht von " << x0 << " bis "<< x1 << endl << "Der Wert fuer f(" << xt << ") ist " << f(xt) << endl;
-//    cout << xt << endl;
-//    cout << abs(x0-x1) << endl << f(xt,nf) << endl;
-    if(abs(x0-x1)<0.00001 || abs(f(xt))<0.0001){
+    if(abs(x0-x1)<0.0001 || abs(f(xt))<0.001){
            cout << endl << "Die Funktion hat eine Nullstelle bei " << xt << "." <<endl;
         return;
     }
     else{
-        if(existiert(x0,x1,xt)==0){
+        if(f(x0)*f(x1)>0){
             cout << "Es gibt in diesem Intervall keine Nullstelle" << endl;
             return;
         }
-        else if(existiert(x0,x1,xt)==1){
+        else if(f(x0)*f(xt)>0){
             nullstellen(xt,x1,counter);
         }
-        else if(existiert(x0,x1,xt)==-1){
+        else if(f(xt)*f(x1)>0){
             nullstellen(x0,xt,counter);
         }
         return;
