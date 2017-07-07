@@ -14,56 +14,49 @@ double f3(double x){
     return pow(x,2)-5*x+sin(x)-1;
 }
 
-void nullstellen(double &x0, double &x1,int counter){
-    counter++;
-    double xt=(x0+x1)/2.;
-    cout << "Schritt " << counter << ":" << endl << "Das Intervall geht von " << x0 << " bis "<< x1 << endl << "Der Wert fuer f(" << xt << ") ist " << f(xt) << endl;
-    if(abs(x0-x1)<0.0001 || abs(f(xt))<0.001){
-           cout << endl << "Die Funktion hat eine Nullstelle bei " << xt << "." <<endl;
-        return;
-    }
-    else{
-        if(f(x0)*f(x1)>0){
+double nullstellen(double x0,double x1,double epsx, double epsf){
+	double xt;
+
+    for(int i=0;abs(x0-x1)>=epsx and abs(f(xt))>=epsf; i++){
+    	xt=(x0+x1)/2.;
+        cout << "Schritt " << i << ":" << endl << "Das Intervall geht von " << x0 << " bis "<< x1 << endl << "Der Wert fuer f(" << xt << ") ist " << f(xt) << endl;
+		if(f(x0)*f(x1)>0){
             cout << "Es gibt in diesem Intervall keine Nullstelle" << endl;
-            return;
+            return 0;
         }
         else if(f(x0)*f(xt)>0){
-            nullstellen(xt,x1,counter);
+           x0 = xt;
         }
         else if(f(xt)*f(x1)>0){
-            nullstellen(x0,xt,counter);
+           x1 = xt;
         }
-        return;
     }
+    return xt;
 }
 
 int main()
 {
-    int nf,counter=0;
-    double x0,x1;
-
+    int nf;
+    double null;
+	double epsx=pow(10,-4), epsf=pow(10,-3);
     cout << "Welche Funktion?" << endl;
     cin >> nf;
     if(nf==1){
-        x0=-10;
-        x1=10;
-        f=f1;
+    	f=f1;
+    	null = nullstellen(-10,10,epsx,epsf);
     }
     else if(nf==2){
-        x0=2;
-        x1=10;
-        f=f2;
+    	f=f2;
+    	null = nullstellen(2,10,epsx,epsf);
     }
     else if(nf==3){
-        x0=-5;
-        x1=5;
-        f=f3;
+    	f=f3;
+    	null = nullstellen(-5,5,epsx,epsf);
     }
     else{
         cout << "Gibt es nicht!" << endl;
         return 1;
     }
-    nullstellen(x0,x1,counter);
-
+	cout << endl << "Die Funktion f" << nf << "(x) hat eine Nullstelle bei " << null << endl;
     return 0;
 }
