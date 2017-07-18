@@ -23,7 +23,6 @@ public:
     Node(double x) { value=x ; left=0; right=0 ; } ; // Konstruktor
     void insert(double x) ;
     double min() ;
-    double min_v2() ;
     friend ostream & operator<< (ostream & str, const Node & n) ;
 } ;
 
@@ -47,20 +46,13 @@ void Node::insert( double x)
 	}
     return ;
 }
-    
-double Node::min(){
-    Node* Aktuell=this ;
-    while (0 != (*Aktuell).left) Aktuell=(*Aktuell).left ;{
-	    return (*Aktuell).value ;
-	}
-}
 
-double Node::min_v2(){
+double Node::min(){
     if (0 == left){
 		return value ;
 	}
     else{
-		return (*left).min_v2() ;   
+		return (*left).min() ;   
 	}
 }
 
@@ -83,6 +75,5 @@ int main()
 		tree.insert(x) ;
     }
     cout << "Die minimale Zahl im Baum ist: " << tree.min() << endl ;
-    cout << "Die minimale Zahl im Baum ist: " << tree.min_v2() << endl ;
     cout << "Alle Eintraege sortiert: " << endl << "  " << tree << endl ;
 }
